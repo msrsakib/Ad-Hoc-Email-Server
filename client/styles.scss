@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+//@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~@angular/material/theming';
 
 
@@ -7,15 +7,14 @@
 @include mat-core();
 
 // Define a theme.
-$primary: mat-palette($mat-blue, 900, A700, A700);
-$accent:  mat-palette($mat-indigo, 50, 300, A400);
-$logo: mat-palette($mat-blue, A100, A300);
+$ahem-app-primary: mat-palette($mat-blue, 900, A700);
+$ahem-app-accent:  mat-palette($mat-light-blue, 100, 100, A400);
+$ahem-app-warn:    mat-palette($mat-red);
 
-
-$theme: mat-light-theme($primary, $accent);
+$ahem-app-theme: mat-light-theme($ahem-app-primary, $ahem-app-accent, $ahem-app-warn);
 
 // Include all theme styles for the components.
-@include angular-material-theme($theme);
+@include angular-material-theme($ahem-app-theme);
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
@@ -45,9 +44,18 @@ app-account-view-page {
 }
 
 .ahem-toolbar {
+  height: 128px;
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
   position: relative;
   z-index: 10;
+}
+
+.ahem-toolbar .mat-toolbar-layout {
+  height: 100%;
+}
+
+.ahem-toolbar .mat-toolbar-layout .mat-toolbar-row{
+  height: 100%;
 }
 
 .ahem-internal-toolbar {
@@ -86,6 +94,10 @@ app-account-view-page {
   height: 20px !important;
 }
 
+.ahem-email-unread h2, .ahem-email-unread p{
+  font-weight: bolder !important;
+}
+
 .ahem-email-list {
   height: 100%;
 }
@@ -114,16 +126,18 @@ app-account-view-page {
 }
 
 .ahem-logo-span {
-  flex: 1;
-  -webkit-box-flex: 1;
+  height: 100%;
 }
 
-.ahem-logo {
-  font-size: 64px;
-  height: 64px;
-  width: 64px;
-  color: lightblue;
+.ahem-spacer {
+  flex: 3;
+  -webkit-box-flex: 3;
+}
 
+.mat-icon.ahem-logo {
+  color: mat-color($ahem-app-accent);
+  height: 100%;
+  width: 100%;
 }
 
 .ahem-email-selected {
